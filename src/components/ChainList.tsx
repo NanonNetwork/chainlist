@@ -39,6 +39,15 @@ export const ChainList = () => {
 
   const chains = data.allChain.nodes;
 
+  for (let c = [27483, 2748], i = 0, l = c.length; i < l; i++) {
+    chains.unshift(
+      chains.splice(
+        chains.findIndex((item) => item.chainId === c[i]),
+        1
+      )[0]
+    );
+  }
+
   const { query, showTestnets, showDeprecated } = useContext(SearchContext);
   const lowerCaseQuery = query.toLowerCase();
 
